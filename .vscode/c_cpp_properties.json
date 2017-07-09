@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/usr/include",
+                "/home/mathew/Applications/arduino/hardware/arduino/avr/cores/arduino",
+                "/home/mathew/Applications/arduino/hardware/tools/avr/avr/include",
+                "/home/mathew/Applications/arduino/hardware/arduino/avr/variants/standard",
+                "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/Wire/src",
+                "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/EEPROM/src",
+                "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/SPI/src/",
+                "{$Workspace}/lib/QTRSensors/",
+                "{$Workspace}/lib/Bounce2/"
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "",
+                "path": [
+                    "/usr/include",
+                    "/home/mathew/Applications/arduino/hardware/arduino/avr/cores/arduino",
+                    "/home/mathew/Applications/arduino/hardware/tools/avr/avr/include",
+                "/home/mathew/Applications/arduino/hardware/arduino/avr/variants/standard",
+                    "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/Wire/src",
+                    "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/EEPROM/src",
+                    "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/SPI/src/",
+                    "{$Workspace}/lib/QTRSensors/",
+                    "{$Workspace}/lib/Bounce2/"
+                ]
+            },
+            "intelliSenseMode": "clang-x64"
+        }
+    ]
+}
