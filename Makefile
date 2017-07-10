@@ -11,12 +11,12 @@ PROJECT_DIR       = .
 
 ### ARDMK_DIR
 ### Path to the Arduino-Makefile directory.
-ARDMK_DIR         = /home/mathew/Applications/Arduino-Makefile
+#ARDMK_DIR         = /home/mathew/Applications/Arduino-Makefile
 
 ### ARDUINO_DIR
 ### Path to the Arduino application and resources directory.
 ### or on Linux: (remove the one you don't want)
-ARDUINO_DIR       = /home/mathew/Applications/arduino
+#ARDUINO_DIR       = /home/mathew/Applications/arduino
 
 ### USER_LIB_PATH
 ### Path to where the your project's libraries are stored.

@@ -1,13 +1,8 @@
-//#include <EEPROM.h>
 #include <Arduino.h>
 #include <Bounce2.h>
 #include <QTRSensors.h>
 #include <avr/pgmspace.h>
 #include <math.h>
-
-// #define LED_RED 6
-// #define LED_YELLOW 5
-// #define LED_GREEN 10
 
 #define MOTOR_1_PIN_A 5
 #define MOTOR_1_PIN_B 6
@@ -22,15 +17,14 @@
 #define RAMP_UP 240
 #define RAMP_DOWN -80
 
-#define GONDALA_3 3
-#define ROTATION_FULL 12
-
 #define QTR_PIN_GND PIN_A0   // PC0
 #define QTR_PIN_VCC PIN_A2   // PC1
 #define QTR_PIN_DATA PIN_A1  // PC2
 
 #define QTR_MAX_VALUE_WHITE 999
 #define QTR_MIN_VALUE_BLACK 1000
+
+#define CALIBRATION_TIME 30000 
 
 uint8_t wheelSpeed = 0;
 int servoPosition = 0;
@@ -54,6 +48,8 @@ uint8_t sequence_index = 0;
 bool sequence_reverse = false;
 static uint8_t sequence_counts[] = {3, 3, 3, 3, 37, 3, 6, 3, 3, 6, 37};
 #define SEQUENCE_COUNT_LENGTH 11
+
+void serialEvent();
 
 void driveWheel(uint8_t speed, bool reverse = false) {
   if (!reverse) {
@@ -139,11 +135,10 @@ void setup() {
 
 bool startedFromSwitch = false;
 
-void loop() {
+bool checkSwitch(){
   bounce.update();
   if (bounce.fell()) {
     if (!sequence) {
-      // sequence = true;
       putRampDown();
       if (!qtrCalibrated) {
         sequence_reverse = false;
@@ -152,6 +147,10 @@ void loop() {
         qtrCalibrate = true;
         startCalibrateMS = millis();
         startedFromSwitch = true;
+      }else{
+        Serial.println(F("Start Sequence"));
+        sequence = true;
+        startedFromSwitch = false;
       }
       startWheel();
     } else {
@@ -161,7 +160,24 @@ void loop() {
       stopWheel();
       putRampDown();
     }
+    return true;
   }
+  return false;
+}
+
+bool delayWithSerial(uint16_t delay){
+  uint16_t millis_start = millis();
+  while(millis() - millis_start < delay){
+    serialEvent();
+    if(checkSwitch()){
+      return false;
+    }
+  }
+  return true;
+}
+
+void loop() {
+  checkSwitch();
 
   if (sequence) {
     qtr.readCalibrated(&qtr_values);
@@ -173,15 +189,27 @@ void loop() {
       Serial.println(F("White"));
       isQtrBlack = false;
       counter++;
-      if (counter > sequence_counts[sequence_index]) {  // GONDALA_3){
+      if (counter >= sequence_counts[sequence_index]) {  // GONDALA_3){
         counter = 0;
 
         stopWheel();
-        delay(1000);
+        
+        if(!delayWithSerial(1000)){
+          return;
+        }
+        
         putRampUp();
-        delay(10000);
+        
+        if(!delayWithSerial(10000)){
+          return;
+        }
+        
         putRampDown();
-        delay(1000);
+        
+        if(!delayWithSerial(1000)){
+          return;
+        }
+        
         if (sequence) {
           startWheel();
         }
@@ -200,26 +228,7 @@ void loop() {
       isQtrBlack = true;
       Serial.println(F("Black"));
     }
-    // delay(10);
   }
-
-  //   counter++;
-
-  //   if(sequence && counter == GONDALA_3){
-  //     counter =0;
-  //     stopWheel();
-  //     delay(1000);
-  //     putRampUp();
-  //     delay(10000);
-  //     putRampDown();
-  //     delay(1000);
-  //     if(!sequence){
-  //       startWheel();
-  //     }
-  //   }
-  //   Serial.print(F("Counter"));
-  //   Serial.println(counter);
-  // }
 
   if (qtrTest) {
     qtr.read(&qtr_values);
@@ -228,13 +237,11 @@ void loop() {
     Serial.print(F(" C "));
     qtr.readCalibrated(&qtr_values);
     Serial.println(qtr_values);
-    delay(10);
   }
 
   if (qtrCalibrate) {
     qtr.calibrate();
-    // delay(5);
-    if (millis() - startCalibrateMS > 30000) {
+    if (millis() - startCalibrateMS > CALIBRATION_TIME) {
       qtrCalibrate = false;
       Serial.print(F("Calibrate Finished "));
       Serial.print((int)qtr.calibratedMinimumOn);

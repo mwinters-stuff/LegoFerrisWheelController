@@ -6,5 +6,6 @@
       "type_traits": "cpp",
       "*.tcc": "cpp"
     },
-  "jshint.enable": false
+    "C_Cpp.clang_format_style": "Google",
+    "C_Cpp.intelliSenseEngine": "Default"
   }

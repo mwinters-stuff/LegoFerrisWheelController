@@ -1,34 +1,69 @@
 {
-    "configurations": [
-        {
-            "name": "Linux",
-            "includePath": [
-                "/usr/include",
-                "/home/mathew/Applications/arduino/hardware/arduino/avr/cores/arduino",
-                "/home/mathew/Applications/arduino/hardware/tools/avr/avr/include",
-                "/home/mathew/Applications/arduino/hardware/arduino/avr/variants/standard",
-                "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/Wire/src",
-                "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/EEPROM/src",
-                "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/SPI/src/",
-                "{$Workspace}/lib/QTRSensors/",
-                "{$Workspace}/lib/Bounce2/"
-            ],
-            "browse": {
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": "",
-                "path": [
-                    "/usr/include",
-                    "/home/mathew/Applications/arduino/hardware/arduino/avr/cores/arduino",
-                    "/home/mathew/Applications/arduino/hardware/tools/avr/avr/include",
-                "/home/mathew/Applications/arduino/hardware/arduino/avr/variants/standard",
-                    "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/Wire/src",
-                    "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/EEPROM/src",
-                    "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/SPI/src/",
-                    "{$Workspace}/lib/QTRSensors/",
-                    "{$Workspace}/lib/Bounce2/"
-                ]
-            },
-            "intelliSenseMode": "clang-x64"
-        }
-    ]
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": [
+        "/usr/include",
+        "/home/mathew/Applications/arduino/hardware/arduino/avr/cores/arduino",
+        "/home/mathew/Applications/arduino/hardware/tools/avr/avr/include",
+        "/home/mathew/Applications/arduino/hardware/arduino/avr/variants/standard",
+        "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/Wire/src",
+        "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/EEPROM/src",
+        "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/SPI/src/",
+        "{$Workspace}/lib/QTRSensors/",
+        "{$Workspace}/lib/Bounce2/"
+      ],
+      "browse": {
+        "limitSymbolsToIncludedHeaders": true,
+        "databaseFilename": "",
+        "path": [
+          "/usr/include",
+          "/home/mathew/Applications/arduino/hardware/arduino/avr/cores/arduino",
+          "/home/mathew/Applications/arduino/hardware/tools/avr/avr/include",
+          "/home/mathew/Applications/arduino/hardware/arduino/avr/variants/standard",
+          "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/Wire/src",
+          "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/EEPROM/src",
+          "/home/mathew/Applications/arduino/hardware/arduino/avr/libraries/SPI/src/",
+          "{$WorkspaceRoot}/lib/QTRSensors/",
+          "{$workspaceRoot}/lib/Bounce2/"
+        ]
+      },
+      "intelliSenseMode": "clang-x64"
+    },
+    {
+      "name": "WSL",
+      "includePath": [
+        "${workspaceRoot}",
+        "${localappdata}/lxss/rootfs/usr/include/c++/5",
+        "${localappdata}/lxss/rootfs/usr/include/x86_64-linux-gnu/c++/5",
+        "${localappdata}/lxss/rootfs/usr/include/c++/5/backward",
+        "${localappdata}/lxss/rootfs/usr/lib/gcc/x86_64-linux-gnu/5/include",
+        "${localappdata}/lxss/rootfs/usr/local/include",
+        "${localappdata}/lxss/rootfs/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",
+        "${localappdata}/lxss/rootfs/usr/include/x86_64-linux-gnu",
+        "${localappdata}/lxss/rootfs/usr/include",
+        "${localappdata}/lxss/home/mwinters/Applications/arduino/arduino-1.8.3",
+        "{$workspaceRoot}/lib/QTRSensors/",
+        "{$workspaceRoot}/lib/Bounce2/"
+      ],
+      "browse": {
+        "databaseFilename": "",
+        "path": [
+          "${workspaceRoot}",
+          "${localappdata}/lxss/rootfs/usr/include/c++/5",
+          "${localappdata}/lxss/rootfs/usr/include/x86_64-linux-gnu/c++/5",
+          "${localappdata}/lxss/rootfs/usr/include/c++/5/backward",
+          "${localappdata}/lxss/rootfs/usr/lib/gcc/x86_64-linux-gnu/5/include",
+          "${localappdata}/lxss/rootfs/usr/local/include",
+          "${localappdata}/lxss/rootfs/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",
+          "${localappdata}/lxss/rootfs/usr/include/x86_64-linux-gnu",
+          "${localappdata}/lxss/rootfs/usr/include",
+          "${localappdata}/lxss/home/mwinters/Applications/arduino-1.8.3",
+          "{$workspaceRoot}/lib/QTRSensors/",
+          "{$workspaceRoot}/lib/Bounce2/"
+        ]
+      },
+      "intelliSenseMode": "clang-x64"
+    }
+  ]
 }
